@@ -1,0 +1,49 @@
+{% extends "home/master.html" %}
+{% block title %}
+Bostorek Books
+{% endblock %}
+{% block content %}
+{%load static%}
+
+		<!-- start Main -->
+		<section id="main">
+			<!-- start gallery Thumbnails -->
+			<section class="thumbnails">
+				<div class="container mt-3">
+					
+					
+					<table class="table table-dark table-striped">
+					  <thead>
+						<tr>
+							
+						</tr>
+					  </thead>
+					  <tbody>
+						<h2 style="text.alighn=center">{{anva.onvan}}</h2>
+						<tr>
+							
+							{%for item in anva %}
+							
+						  <td><div class="card" style="width:200px ">
+					    
+							<a href="{{item.id}}/"><img class="card-img-top " src="{{item.aks1.url}}" alt="Card image"></a>
+					         <div class="card-body">
+					 
+					         <a href="{{item.id}}/" class="btn btn-primary">more info</a>
+							 </div>
+						 </div>
+						 {%endfor%}
+						</td>
+						 
+						</tr>
+						
+					  </tbody>
+					</table>
+				  
+				</div>
+			</section>
+			<!-- end gallery Thumbnails -->
+		</section>
+		<!-- end Main -->
+	</div>
+  {% endblock %}

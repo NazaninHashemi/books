@@ -1,0 +1,84 @@
+{% extends "home/master.html" %}
+{% block title %}
+Register 
+{% endblock %}
+{% block content %}
+{%load static%}
+
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="heading_container ">
+            <h2 class="">
+                Membership
+            </h2>
+          </div>
+          <div class="">
+            {% if message %}
+              {%for message in message%}
+                 {{message}}
+              {%endfor%}
+            {%endif%}
+          </div>
+          <form  action="#" method='POST' >{% csrf_token %}
+            
+              <div>
+            <div>
+              <input type="text" placeholder="Name" name="fname" id="fname" />
+            </div>
+          
+            <div>
+              <input type="password" placeholder="password" name="pass" id="pass" />
+             
+            </div>
+            <div>
+                <input type="password" placeholder="repassword" name="rpass" id="rpass" />
+              
+            </div>
+            <div class="btn-box">
+              <button type="submit" value="login" onclick="payam">
+                Submit
+              </button>
+            </div>
+              <div>
+              
+              
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="images/contact-img.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end contact section -->
+<!--script>
+  function payam(){
+    var n=document.getElementById(name).value
+    var f=document.getElementById(famil).value
+    var m=document.getElementById(Message).value
+    var e=document.getElementById(email).value
+    var p=document.getElementById(Phone).value
+    var t=document.getElementByName(crfmiddlewaretoken)[0]
+    $.ajax({
+      type:"POST",
+      data:{name:n , family:f,email:e,message:m, phonenumber:p,crfmiddlewaretoken:t}, 
+      url:"contact", 
+      success:
+         function(res)
+          {alert("OK")}
+
+    })
+    
+  }
+</script-->
+
+  {% endblock %}

@@ -1,0 +1,74 @@
+{% extends "home/master.html" %}
+{% block title %}
+contact Bostorek 
+{% endblock %}
+{% block content %}
+{%load static%}
+
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="heading_container ">
+            <h2 class="">
+              Contact Us
+            </h2>
+          </div>
+          <form  action="#" method='POST' >{% csrf_token %}
+            <div>
+              <input type="text" placeholder="Name" name="name" id="name" />
+            </div>
+            <div>
+              <input type="email" placeholder="Email" name="email" id="email"/>
+
+            </div>
+            <div>
+              <input type="text" placeholder="Phone Number" name="Phone" id="Phone" />
+             
+            </div>
+            <div>
+              <input type="text" class="message-box" placeholder="Message" name="message" id="Message" />
+              
+            </div>
+            <div class="btn-box">
+              <button type="submit" value="send" onclick="payam">
+                SEND
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="images/contact-img.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end contact section -->
+<!--script>
+  function payam(){
+    var n=document.getElementById(name).value
+    var f=document.getElementById(famil).value
+    var m=document.getElementById(Message).value
+    var e=document.getElementById(email).value
+    var p=document.getElementById(Phone).value
+    var t=document.getElementByName(crfmiddlewaretoken)[0]
+    $.ajax({
+      type:"POST",
+      data:{name:n , family:f,email:e,message:m, phonenumber:p,crfmiddlewaretoken:t}, 
+      url:"contact", 
+      success:
+         function(res)
+          {alert("OK")}
+
+    })
+    
+  }
+</script-->
+
+  {% endblock %}

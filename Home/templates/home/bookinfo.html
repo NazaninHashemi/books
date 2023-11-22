@@ -1,0 +1,58 @@
+
+{% extends "home/master.html" %}
+{% block title %}
+Bostorek Bookstore
+{% endblock %}
+{% block content %}
+{%load static%}
+<link type="text/css" href="{% static 'home/css/css2/style.css' %}" rel="stylesheet" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<main >
+	<div class="container ">
+		
+		<div class="grid product">
+			<div class="column-xs-12 column-md-7">
+				<div class="product-gallery">
+					<div class="product-image">
+						<img class="active" style="  width:200px" src={{info.aks1.url}}>
+					</div>
+					
+				</div>
+			</div>
+			<div class="column-xs-12 column-md-5" >
+				<h1 >{{info.namebook}}</h1>
+				:the writer<h2 style= "direction: rtl ; font-family: 'Vazir', sans-serif color: #888" >{{info.nevisande}}</h2>
+				<div class="description">
+					<p>{{info.kholase}}
+				</div>
+				
+			</div>
+		</div>
+		<!--div class="grid related-products">
+			<div class="column-xs-12">
+				<h3>این محصولات نیز پیشنهاد می شوند</h3>
+			</div>
+			<div class="column-xs-12 column-md-4">
+				<img src="pics/pic4.jfif">
+				<h4>ساکلنت</h4>
+				<p class="price">190 هزار تومان</p>
+			</div>
+			<div class="column-xs-12 column-md-4">
+				<img src="pics/pic5.jfif">
+				<h4>تراریوم</h4>
+				<p class="price">190 هزار تومان</p>
+			</div>
+			<div class="column-xs-12 column-md-4">
+				<img src="pics/pic6.jfif">
+				<h4>کاکتوس</h4>
+				<p class="price">190 هزار تومان</p>
+			</div>
+		</div-->
+	</div>
+</main>
+					
+  <script  src="{% static 'home/js/scripts.js'%}"></script>						
+ {% endblock %}
