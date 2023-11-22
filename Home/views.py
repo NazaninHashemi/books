@@ -40,44 +40,64 @@ def infobook(request,idinfo):
     i=bookinfo.objects.get(pk=idinfo)
     return render(request,"home/bookinfo.html",context={"info":i})
 
+def reg(request):
+    st=False
+    contex={"errors":[]}
+    if request.method=="POST" :
+        
+        f=request.POST['fname']
+        p=request.POST['pass']
+        pr=request.POST['rpass']
+        if len(p)<6:
+            st=True
+            contex["errors"].append("Password must be more than 6 characters")
+        if p!=pr:
+            st=True
+            contex["errors"].append("Enter the correct password")
+        if st==False:
+            
+          u=User.objects.create_user(username=f,password=p)
+          u.save()
+          messages.success(request,"You have become a member of our site! :)")
+          return render(request,'home/users.html') 
+    else:
+         messages.error(request,"Enter the information!") 
+         return render(request,'home/reg.html',contex) 
+         
 
 def userlogin(request):
     if (request.method == 'POST'):
         u=request.POST['uname']
         p= request.POST['upass']
-        user=authenticate(request,userneme=u,password=p)
+        user= authenticate(request,username=u,password=p)
         if user is not None:
-            if user.is_active:
              login(request,user)
-             return redirect(request, 'userpanel/')
-            else:
-              messages.success(request,"register please")
+             return render(request, 'home/userpanel.html')
         
         else:
-            messages.success(request,"there is an error, try agein")
+            messages.error(request,"there is an error, try agein")
             return render(request,'home/users.html')
          
     else:
-         messages.success(request,"!Enter the information!")
+         messages.error(request,"!Enter the information!")
          return render(request,'home/users.html')
      
-  #form = AuthenticationForm()
-    #if request.method == 'POST':
-       # form = AuthenticationForm(request.POST)
-        #if form.is_valid():
-          #  username = form.cleaned_data.get('uname')
-          #  password = form.cleaned_data.get('upass')
-          #  user = authenticate(username=username, password=password)
-            #if user is not None:
-                #login(request,user)
-                
-                #return redirect('userpanel/')
-            #else:
-                #messages.error(request,'register please')
+ #form = AuthenticationForm()
+ #if request.method == 'POST':
+   # form = AuthenticationForm(request.POST)
+   # if form.is_valid():
+       # username = form.cleaned_data.get('uname')
+       #password = form.cleaned_data.get('upass')
+        #user = authenticate(username=username, password=password)
+       # if user is not None:
+             #login(request,user)
+             #return redirect('userpanel/')
         #else:
-           # messages.error(request,'there is an error, try agein')
-   # context = {'form':form}
-    #return render(request,'home/users.html',context)     
+               # messages.error(request,'register please')
+   # else:
+            #messages.error(request,'there is an error, try agein')
+ #context = {'form':form}
+ #return render(request,'home/users.html',context)     
     
         
 def upanel(request):
@@ -90,31 +110,36 @@ def lout(request):
     logout(request)
     return redirect("/")
 
-def error(request):
-    return render(request,"home/error.html")
+#def error(request):
+    #return render(request,"home/error.html")
 
 def reg(request):
-    st=False
-    contex={"errors":[]}
+    #st=False
+    #contex={"errors":[]}
     if request.method=="POST" :
         
-        f=request.POST["fname"]
-        p=request.POST["pass"]
-        pr=request.POST["rpass"]
+        f=request.POST['fname']
+        p=request.POST['pass']
+        pr=request.POST['rpass']
         if len(p)<6:
-            st=True
-            contex["errors"].append("Password must be more than 6 characters")
+            messages.error(request,"Password must be more than 6 characters")
+            return render(request,'home/reg.html') 
+            #st=True
+            #contex["errors"].append("Password must be more than 6 characters")
         if p!=pr:
-            st=True
-            contex["errors"].append("Enter the correct password")
-        if st==False:
-            
-          User.objects.create(username=f,password=p)
+            #st=True
+            #contex["errors"].append("Enter the correct password")
+            messages.error(request,"Enter the correct password")
+            return render(request,'home/reg.html')
+        #if st==False:
+        else:
+          u=User.objects.create_user(username=f,password=p)
+          u.save()
           messages.success(request,"You have become a member of our site! :)")
           return render(request,'home/users.html') 
-    else:
-         messages.success(request,"Enter the information!") 
-         return render(request,'home/reg.html',contex) 
+    #else:
+         #messages.error(request,"Enter the information!") 
+    return render(request,'home/reg.html') 
          
 
 

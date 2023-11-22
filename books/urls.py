@@ -14,8 +14,7 @@ urlpatterns = [
   path('History/<int:idinfo>/',infobook),
    path('user',userlogin),
   path('userpanel/',upanel),
-   path('logout/',lout),
-    path('error/',error),
+   path('logout/',lout), 
     path('register',reg),
   
 ]
